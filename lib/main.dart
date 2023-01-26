@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:supercharged_dart/supercharged_dart.dart';
+import 'package:ternakku/auth/login/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // home: ,
+      debugShowCheckedModeBanner: false,
+      home: LoginPage(),
     );
   }
 }
