@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ternakku/global/colors.dart';
+import 'package:ternakku/ternakku_index.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -178,7 +179,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       "Sign Up",
                       style: TextStyle(color: Colors.white),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TernakKuIndex()));
+                    },
                   ),
                 ),
               ),
