@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ternakku/global/colors.dart';
+import 'package:ternakku/ternakku_index.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   bool _obscureText = true;
   bool _checked = false;
 
@@ -65,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Login to your\nAccount',
+                    'Create New\nAccount',
                     textAlign: TextAlign.start,
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
@@ -106,6 +107,52 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: InputDecoration(
                       hintStyle: TextStyle(color: Warna.fadeGrey),
                       filled: true,
+                      hintText: 'Email',
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Warna.fadeGrey),
+                          borderRadius: BorderRadius.circular(12)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Warna.secondaryGreen),
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                  )),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                  height: 50,
+                  width: 430,
+                  child: TextFormField(
+                    textAlign: TextAlign.left,
+                    textAlignVertical: TextAlignVertical.center,
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(color: Warna.fadeGrey),
+                      filled: true,
+                      hintText: 'No. Telp',
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Warna.fadeGrey),
+                          borderRadius: BorderRadius.circular(12)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 1, color: Warna.secondaryGreen),
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                  )),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                  height: 50,
+                  width: 430,
+                  child: TextFormField(
+                    textAlign: TextAlign.left,
+                    textAlignVertical: TextAlignVertical.center,
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(color: Warna.fadeGrey),
+                      filled: true,
                       hintText: 'Password',
                       enabledBorder: OutlineInputBorder(
                           borderSide:
@@ -118,34 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   )),
               SizedBox(
-                height: 15,
-              ),
-              Container(
-                height: 50,
-                width: 200,
-                alignment: Alignment.center,
-                child: Transform.scale(
-                  scale: 0.8,
-                  child: CheckboxListTile(
-                    activeColor: Warna.primaryGreen,
-                    value: _checked,
-                    onChanged: (value) {
-                      setState(() {
-                        _checked = value!;
-                      });
-                    },
-                    title: Text(
-                      'Remember me',
-                      // style: TextStyle(fontSize: 14),
-                    ),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    visualDensity:
-                        const VisualDensity(horizontal: -4.0, vertical: -4.0),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
+                height: 40,
               ),
               Container(
                 height: 50,
@@ -156,10 +176,15 @@ class _LoginPageState extends State<LoginPage> {
                   color: Warna.primaryGreen,
                   child: TextButton(
                     child: Text(
-                      "Login",
+                      "Sign Up",
                       style: TextStyle(color: Colors.white),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TernakKuIndex()));
+                    },
                   ),
                 ),
               ),
