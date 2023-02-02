@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ternakku/global/colors.dart';
+import 'package:ternakku/ternakku_index.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -159,7 +160,12 @@ class _LoginPageState extends State<LoginPage> {
                       "Login",
                       style: TextStyle(color: Colors.white),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TernakKuIndex()));
+                    },
                   ),
                 ),
               ),
