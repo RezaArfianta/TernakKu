@@ -3,26 +3,18 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ternakku/global/colors.dart';
 import 'package:ternakku/ternakku_index.dart';
+import 'package:get/get.dart';
 
-class LoginPage extends StatefulWidget {
+import 'controller/loginpage_controller.dart';
+
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  bool _obscureText = true;
-  bool _checked = false;
-
-  void _toggle() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    LoginController c = Get.put(LoginController());
+    bool checked = false;
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -121,30 +113,26 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 15,
               ),
-              Container(
-                height: 50,
-                width: 200,
-                alignment: Alignment.center,
-                child: Transform.scale(
-                  scale: 0.8,
-                  child: CheckboxListTile(
-                    activeColor: Warna.primaryGreen,
-                    value: _checked,
-                    onChanged: (value) {
-                      setState(() {
-                        _checked = value!;
-                      });
-                    },
-                    title: Text(
-                      'Remember me',
-                      // style: TextStyle(fontSize: 14),
-                    ),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    visualDensity:
-                        const VisualDensity(horizontal: -4.0, vertical: -4.0),
-                  ),
-                ),
-              ),
+              // Container(
+              //   height: 50,
+              //   width: 200,
+              //   alignment: Alignment.center,
+              //   child: Transform.scale(
+              //     scale: 0.8,
+              //     child: CheckboxListTile(
+              //       activeColor: Warna.primaryGreen,
+              //       value: checked,
+              //       onChanged: (value) {},
+              //       title: Text(
+              //         'Remember me',
+              //         // style: TextStyle(fontSize: 14),
+              //       ),
+              //       controlAffinity: ListTileControlAffinity.leading,
+              //       visualDensity:
+              //           const VisualDensity(horizontal: -4.0, vertical: -4.0),
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: 20,
               ),

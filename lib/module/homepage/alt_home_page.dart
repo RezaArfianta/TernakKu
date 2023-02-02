@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ternakku/module/homepage/see_all_page.dart';
+import 'package:ternakku/module/category/index_seeall_page.dart';
+import 'package:ternakku/module/category/see_all_page.dart';
 
 import '../../global/colors.dart';
 
@@ -87,7 +88,7 @@ class _HomePage2State extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SeeAllPage()));
+                                builder: (context) => SeeAllIndex()));
                       },
                       child: Text(
                         'See All >',
@@ -103,18 +104,36 @@ class _HomePage2State extends State<HomePage> {
               ),
               Row(
                 children: [
-                  Container(
-                    width: 235,
-                    height: 250,
-                    color: Colors.green,
+                  InkWell(
+                    child: Container(
+                      width: 235,
+                      height: 250,
+                      // color: Colors.green,
+                    ),
                   ),
                   Spacer(
                     flex: 3,
                   ),
-                  Container(
-                    width: 235,
-                    height: 250,
-                    color: Colors.green,
+                  InkWell(
+                    child: Container(
+                      width: 235,
+                      height: 250,
+                      // color: Colors.green,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                        elevation: 5,
+                        child: Container(
+                          width: 200,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image(
+                              image: NetworkImage(''),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -123,18 +142,22 @@ class _HomePage2State extends State<HomePage> {
               ),
               Row(
                 children: [
-                  Container(
-                    width: 235,
-                    height: 250,
-                    color: Colors.green,
+                  InkWell(
+                    child: Container(
+                      width: 235,
+                      height: 250,
+                      // color: Colors.green,
+                    ),
                   ),
                   Spacer(
                     flex: 2,
                   ),
-                  Container(
-                    width: 235,
-                    height: 250,
-                    color: Colors.green,
+                  InkWell(
+                    child: Container(
+                      width: 235,
+                      height: 250,
+                      // color: Colors.green,
+                    ),
                   ),
                 ],
               ),
