@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: TernakKuIndex(),
       theme: ThemeData(
           highlightColor: Colors.transparent,
           hoverColor: Colors.transparent,
