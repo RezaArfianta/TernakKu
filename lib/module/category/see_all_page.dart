@@ -10,7 +10,7 @@ class SeeAllPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        title: ,
+        title: Text('data'),
       ),
     );
   }
