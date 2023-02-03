@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ternakku/api_url.dart';
+
+import '../../../../ternakku_index.dart';
 
 class SignupController extends GetxController {
   TextEditingController username = TextEditingController();
@@ -14,9 +17,9 @@ class SignupController extends GetxController {
     super.onInit();
   }
 
-  void makeAccount() async {
+  void makeAccount(context) async {
     try {
-      var response = await Dio().post('http://15.15.4.232:3000/users', data: {
+      var response = await Dio().post(ApirUrl.ApiUrl + '/users', data: {
         "username": username.text,
         "password": password.text,
         "nama_pengguna": namaPengguna.text,
@@ -24,10 +27,11 @@ class SignupController extends GetxController {
         "no_telp": noTelp.text
       });
       print(response.data.toString());
-      print('obddject');
+
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => TernakKuIndex()));
     } catch (e) {
       print(e);
-      print('objecdddt');
     }
   }
 }

@@ -204,7 +204,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
-                        c.makeAccount();
+                        c.makeAccount(context);
                       },
                     ),
                   ),
