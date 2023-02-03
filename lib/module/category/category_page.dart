@@ -7,6 +7,8 @@ import 'package:ternakku/module/category/tabs/all_tab.dart';
 import 'package:ternakku/module/category/tabs/makanan_tab.dart';
 import 'package:ternakku/module/category/tabs/obat_tab.dart';
 
+import '../../global/colors.dart';
+
 class CategoryPage extends StatelessWidget {
   int selectedPage;
   CategoryPage(this.selectedPage);
@@ -15,12 +17,14 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
         initialIndex: selectedPage,
-        length: 5,
+        length: 4,
         child: Scaffold(
           appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
             backgroundColor: Colors.white,
             bottom: TabBar(
-              labelColor: Theme.of(context).textTheme.bodyMedium!.color,
+              indicatorColor: Warna.primaryGreen,
+              labelColor: Colors.black,
               onTap: (index) {
                 // Tab index when user select it, it start from zero
               },
@@ -29,19 +33,25 @@ class CategoryPage extends StatelessWidget {
                 Tab(text: ("Alat")),
                 Tab(text: ("Obat")),
                 Tab(text: ("Makanan")),
-                Tab(text: ("Makanan")),
               ],
             ),
             title: TextField(
               controller: TextEditingController(),
-              decoration: InputDecoration(suffixIcon: Icon(Icons.search)),
+              decoration: InputDecoration(
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Warna.primaryGreen)),
+                hintText: 'Search',
+                suffixIcon: Icon(Icons.search),
+                focusColor: Warna.primaryGreen,
+                // filled: true,
+              ),
             ),
           ),
           body: TabBarView(children: [
             new AllTab(),
+            new AlatTab(),
             new ObatTab(),
             new MakananTab(),
-            new AlatTab(),
           ]),
         ));
   }
