@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ternakku/module/category/category_page.dart';
 // import 'package:ternakku/module/category/tabs/makanan_tab.dart';
 // import 'package:ternakku/module/category/tabs/obat_tab.dart';
 
 import '../../global/colors.dart';
+import 'controller/home_controller.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePage2State();
-}
-
-class _HomePage2State extends State<HomePage> {
-  var isTablet = false;
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
+  HomeController c = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -101,214 +97,34 @@ class _HomePage2State extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 235,
-                        height: 250,
-                        // color: Colors.green,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          elevation: 5,
-                          child: Column(
-                            children: <Widget>[
-                              Expanded(
-                                flex: 4,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      top: 18, right: 6, left: 5),
-                                  width: 200,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image(
-                                      image: NetworkImage(
-                                          'https://picsum.photos/200/300'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Alat',
-                                      style: TextStyle(fontSize: 16),
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Spacer(
-                      flex: 3,
-                    ),
-                    InkWell(
-                      child: Container(
-                        width: 235,
-                        height: 250,
-                        // color: Colors.green,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          elevation: 5,
-                          child: Column(
-                            children: <Widget>[
-                              Expanded(
-                                flex: 4,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      top: 18, right: 5, left: 5),
-                                  width: 200,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image(
-                                      image: NetworkImage(
-                                          'https://picsum.photos/200/300'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Obat',
-                                      style: TextStyle(fontSize: 16),
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+              GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: 310,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 235,
-                        height: 250,
-                        // color: Colors.green,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          elevation: 5,
-                          child: Column(
-                            children: <Widget>[
-                              Expanded(
-                                flex: 4,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      top: 18, right: 6, left: 5),
-                                  width: 200,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image(
-                                      image: NetworkImage(
-                                          'https://picsum.photos/200/300'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Makanan',
-                                      style: TextStyle(fontSize: 16),
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ))
-                            ],
-                          ),
+                physics: ClampingScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Image(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          image: NetworkImage('https://picsum.photos/200/300'),
                         ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CategoryPage(3)));
-                      },
+                        Text(c.categoryTitle[index])
+                      ],
                     ),
-                    Spacer(
-                      flex: 2,
-                    ),
-                    InkWell(
-                      child: Container(
-                        width: 235,
-                        height: 250,
-                        // color: Colors.green,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          elevation: 5,
-                          child: Column(
-                            children: <Widget>[
-                              Expanded(
-                                flex: 4,
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      top: 18, right: 6, left: 5),
-                                  width: 200,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image(
-                                      image: NetworkImage(
-                                          'https://picsum.photos/200/300'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Makanan',
-                                      style: TextStyle(fontSize: 16),
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 25,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                  );
+                },
               ),
             ],
           )),

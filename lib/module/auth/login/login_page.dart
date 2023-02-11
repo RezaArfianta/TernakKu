@@ -14,13 +14,11 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController c = Get.put(LoginController());
-    bool checked = false;
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.only(left: 20),
             child: Column(
               children: [
                 Stack(children: [
@@ -72,7 +70,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 Container(
                     height: 50,
-                    width: 430,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
                       controller: c.username,
                       textAlign: TextAlign.left,
@@ -96,23 +94,36 @@ class LoginPage extends StatelessWidget {
                 ),
                 Container(
                     height: 50,
-                    width: 430,
-                    child: TextFormField(
-                      controller: c.password,
-                      textAlign: TextAlign.left,
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(color: Warna.fadeGrey),
-                        filled: true,
-                        hintText: 'Password',
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Warna.fadeGrey),
-                            borderRadius: BorderRadius.circular(12)),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 1, color: Warna.secondaryGreen),
-                            borderRadius: BorderRadius.circular(12)),
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Obx(
+                      () => TextFormField(
+                        obscureText: c.obscureText.value,
+                        controller: c.password,
+                        textAlign: TextAlign.left,
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                c.toggle();
+                              },
+                              icon: Icon(
+                                Icons.remove_red_eye,
+                                color: c.obscureText.value == false
+                                    ? Warna.primaryGreen
+                                    : Warna.fadeGrey,
+                              )),
+                          hintStyle: TextStyle(color: Warna.fadeGrey),
+                          filled: true,
+                          hintText: 'Password',
+                          enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 1, color: Warna.fadeGrey),
+                              borderRadius: BorderRadius.circular(12)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 1, color: Warna.secondaryGreen),
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
                       ),
                     )),
                 SizedBox(
@@ -138,12 +149,9 @@ class LoginPage extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-                SizedBox(
-                  height: 20,
-                ),
                 Container(
                   height: 50,
-                  width: 430,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   child: Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
@@ -159,14 +167,27 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpPage()));
-                    },
-                    child: Text('regis'))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Dont have an account?",
+                      style: TextStyle(color: Colors.black38),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpPage()));
+                        },
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(color: Warna.primaryGreen),
+                        ))
+                  ],
+                ),
               ],
             ),
           ),

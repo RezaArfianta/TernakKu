@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:ternakku/global/colors.dart';
+import 'package:ternakku/module/auth/login/login_page.dart';
 import 'package:ternakku/module/auth/sign%20up/controller/signuppage_controller.dart';
 import 'package:ternakku/ternakku_index.dart';
 
@@ -21,7 +22,6 @@ class _SignUpPageState extends State<SignUpPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.only(left: 20),
             child: Column(
               children: [
                 Stack(children: [
@@ -73,7 +73,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 Container(
                     height: 50,
-                    width: 430,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
                       controller: c.username,
                       textAlign: TextAlign.left,
@@ -97,7 +97,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 Container(
                     height: 50,
-                    width: 430,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
                       controller: c.namaPengguna,
                       textAlign: TextAlign.left,
@@ -105,7 +105,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       decoration: InputDecoration(
                         hintStyle: TextStyle(color: Warna.fadeGrey),
                         filled: true,
-                        hintText: 'nama pengguna',
+                        hintText: 'Nama Pengguna',
                         enabledBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(width: 1, color: Warna.fadeGrey),
@@ -121,7 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 Container(
                     height: 50,
-                    width: 430,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
                       controller: c.email,
                       textAlign: TextAlign.left,
@@ -145,7 +145,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 Container(
                     height: 50,
-                    width: 430,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
                       controller: c.noTelp,
                       textAlign: TextAlign.left,
@@ -169,7 +169,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 Container(
                     height: 50,
-                    width: 430,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     child: TextFormField(
                       controller: c.password,
                       textAlign: TextAlign.left,
@@ -189,11 +189,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     )),
                 SizedBox(
-                  height: 40,
+                  height: 15,
                 ),
                 Container(
                   height: 50,
-                  width: 430,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   child: Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
@@ -208,6 +208,27 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                     ),
                   ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Already have an account?",
+                      style: TextStyle(color: Colors.black38),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        },
+                        child: Text(
+                          "Log In",
+                          style: TextStyle(color: Warna.primaryGreen),
+                        ))
+                  ],
                 ),
               ],
             ),

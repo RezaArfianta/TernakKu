@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ternakku/api_url.dart';
+import 'package:ternakku/module/auth/login/login_page.dart';
 
 import '../../../../ternakku_index.dart';
 
@@ -29,7 +30,7 @@ class SignupController extends GetxController {
       print(response.data.toString());
 
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => TernakKuIndex()));
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
     } catch (e) {
       print(e);
     }
