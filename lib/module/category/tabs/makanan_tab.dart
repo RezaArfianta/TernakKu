@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ternakku/global/colors.dart';
 
 class MakananTab extends StatelessWidget {
   const MakananTab({super.key});

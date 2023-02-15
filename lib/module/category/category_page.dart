@@ -6,7 +6,6 @@ import 'package:ternakku/module/category/tabs/alat_tab.dart';
 import 'package:ternakku/module/category/tabs/all_tab.dart';
 import 'package:ternakku/module/category/tabs/makanan_tab.dart';
 import 'package:ternakku/module/category/tabs/obat_tab.dart';
-
 import '../../global/colors.dart';
 
 class CategoryPage extends StatelessWidget {

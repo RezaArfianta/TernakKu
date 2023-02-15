@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supercharged_dart/supercharged_dart.dart';
-import 'package:ternakku/module/auth/login/login_page.dart';
-import 'package:ternakku/module/auth/sign%20up/signup_page.dart';
-import 'package:ternakku/module/auth/validate/validate_page.dart';
-import 'package:ternakku/module/homepage/alt_home_page.dart';
-import 'package:ternakku/module/homepage/home_page.dart';
-import 'package:ternakku/ternakku_index.dart';
+import 'package:ternakku/module/profile/profile_page.dart';
 
 import 'global/colors.dart';
 import 'routes/app_pages.dart';
@@ -24,9 +19,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: AppPages.initialPage,
       getPages: AppPages.routes,
-      title: 'Flutter Demo',
+      title: 'TernaKku',
+      initialRoute: AppPages.INITIAL,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           highlightColor: Colors.transparent,

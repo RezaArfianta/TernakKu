@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:ternakku/module/homepage/home_page.dart';
-import 'package:ternakku/module/profile/profile_page.dart';
-
 import 'global/colors.dart';
 import 'module/homepage/alt_home_page.dart';
+import 'module/profile/profile_page.dart';
 
 class TernakKuIndex extends StatefulWidget {
   const TernakKuIndex({super.key});

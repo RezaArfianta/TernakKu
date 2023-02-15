@@ -11,20 +11,26 @@ class InformasiUmum extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black,
-            )),
-        backgroundColor: Colors.white,
-        title: Text(
-          title,
-          style: TextStyle(color: Colors.black),
+        leading: BackButton(
+          color: Colors.black,
         ),
+        backgroundColor: Colors.white,
       ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //       onPressed: () {
+      //         Get.back();
+      //       },
+      //       icon: Icon(
+      //         Icons.arrow_back_ios,
+      //         color: Colors.black,
+      //       )),
+      //   backgroundColor: Colors.white,
+      //   title: Text(
+      //     title,
+      //     style: TextStyle(color: Colors.black),
+      //   ),
+      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(20),

@@ -28,9 +28,7 @@ class SignupController extends GetxController {
         "no_telp": noTelp.text
       });
       print(response.data.toString());
-
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
+      Get.back();
     } catch (e) {
       print(e);
     }

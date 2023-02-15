@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ternakku/global/colors.dart';
 import 'package:ternakku/module/auth/sign%20up/signup_page.dart';
+import 'package:ternakku/routes/app_pages.dart';
 import 'package:ternakku/ternakku_index.dart';
 import 'package:get/get.dart';
 
@@ -177,10 +178,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpPage()));
+                          Get.toNamed(Routes.SIGNUP_PAGE);
                         },
                         child: Text(
                           "Sign Up",

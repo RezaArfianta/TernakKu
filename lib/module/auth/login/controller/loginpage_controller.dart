@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:ternakku/api_url.dart';
 import 'package:ternakku/module/auth/sign%20up/signup_page.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:ternakku/routes/routes_name.dart';
+import 'package:ternakku/routes/app_pages.dart';
 import '../../../../ternakku_index.dart';
 
 class LoginController extends GetxController {
@@ -27,10 +27,10 @@ class LoginController extends GetxController {
     try {
       var response = await Dio().post(ApirUrl.ApiUrl + '/auth/login',
           data: {'username': username.text, 'password': password.text});
-      print(response.data['access_token']);
+      print(response.data);
       box.write('access_token', response.data['access_token']);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => TernakKuIndex()));
+      box.write('user_id', response.data['user_id']);
+      Get.offAllNamed(Routes.HOME_PAGE);
     } catch (e) {
       print(e);
     }
