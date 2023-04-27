@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ternakku/global/colors.dart';
 import 'package:ternakku/module/about/informasi_umum_page.dart';
+import 'package:ternakku/module/profile/controller/profile_controller.dart';
 import 'package:ternakku/module/profile/view/pengaturan_profile.dart';
 import 'package:ternakku/widgets/fitur.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+  ProfileController c = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -210,39 +213,58 @@ class ProfilePage extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            Row(children: [
-              SizedBox(
-                width: 1,
-              ),
-              Spacer(),
-              InkWell(
-                child: Container(
-                  width: 250,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          // spreadRadius: 1,
-                          blurRadius: 1)
-                    ],
-                    color: Warna.secondaryGreen,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Log Out',
-                    style: TextStyle(
-                      color: Colors.white,
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: 30,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Warna.secondaryGreen,
                     ),
-                  ),
-                ),
+                    onPressed: () {
+                      c.ClearCookies();
+                    },
+                    child: Text(
+                      'Log Out',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    )),
               ),
-              Spacer(),
-              SizedBox(
-                width: 1,
-              ),
-            ]),
+            ),
+            // Row(children: [
+            //   SizedBox(
+            //     width: 1,
+            //   ),
+            //   Spacer(),
+            //   InkWell(
+            //     child: Container(
+            //       width: 250,
+            //       height: 50,
+            //       decoration: BoxDecoration(
+            //         boxShadow: [
+            //           BoxShadow(
+            //               color: Colors.grey,
+            //               // spreadRadius: 1,
+            //               blurRadius: 1)
+            //         ],
+            //         color: Warna.secondaryGreen,
+            //         borderRadius: BorderRadius.circular(10),
+            //       ),
+            //       alignment: Alignment.center,
+            //       child: Text(
+            //         'Log Out',
+            //         style: TextStyle(
+            //           color: Colors.white,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            //   Spacer(),
+            //   SizedBox(
+            //     width: 1,
+            //   ),
+            // ]),
             SizedBox(
               height: 50,
             )

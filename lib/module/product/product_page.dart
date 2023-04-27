@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ternakku/global/colors.dart';
+import 'package:ternakku/module/product/controller/product_controller.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({super.key, required this.product});
+  ProductPage({super.key, required this.product});
   final dynamic product;
+  ProductController c = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -53,8 +57,10 @@ class ProductPage extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.4,
               child: ElevatedButton(
-                onPressed: () {},
-                child: Text('Buy Now'),
+                onPressed: () {
+                  c.AddToCart(product[0]['id']);
+                },
+                child: Text('Add To Cart'),
               ),
             ),
             SizedBox(

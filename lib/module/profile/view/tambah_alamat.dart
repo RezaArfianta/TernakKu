@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ternakku/module/profile/controller/profile_controller.dart';
 
 import '../../../global/colors.dart';
 
 class AddAddress extends StatelessWidget {
-  const AddAddress({super.key});
+  AddAddress({super.key});
+  ProfileController c = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +32,7 @@ class AddAddress extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   padding: EdgeInsets.only(left: 10),
                   child: TextField(
+                    controller: c.namaPenerima,
                     decoration: InputDecoration(
                         hintText: 'Nama Penerima', border: InputBorder.none),
                   )),
@@ -41,6 +45,7 @@ class AddAddress extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   padding: EdgeInsets.only(left: 10),
                   child: TextField(
+                    controller: c.noTelpPenerima,
                     decoration: InputDecoration(
                         hintText: 'Nomor Telepon', border: InputBorder.none),
                   )),
@@ -53,6 +58,7 @@ class AddAddress extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   padding: EdgeInsets.only(left: 10),
                   child: TextField(
+                    controller: c.provinsi,
                     decoration: InputDecoration(
                         hintText: 'Provinsi', border: InputBorder.none),
                   )),
@@ -65,6 +71,7 @@ class AddAddress extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   padding: EdgeInsets.only(left: 10),
                   child: TextField(
+                    controller: c.kota,
                     decoration: InputDecoration(
                         hintText: 'Kota', border: InputBorder.none),
                   )),
@@ -77,6 +84,7 @@ class AddAddress extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   padding: EdgeInsets.only(left: 10),
                   child: TextField(
+                    controller: c.kecamatan,
                     decoration: InputDecoration(
                         hintText: 'Kecamatan', border: InputBorder.none),
                   )),
@@ -89,6 +97,7 @@ class AddAddress extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   padding: EdgeInsets.only(left: 10),
                   child: TextField(
+                    controller: c.kodePos,
                     decoration: InputDecoration(
                         hintText: 'Kode Pos', border: InputBorder.none),
                   )),
@@ -103,6 +112,7 @@ class AddAddress extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     padding: EdgeInsets.only(left: 10),
                     child: TextField(
+                      controller: c.additionalNotes,
                       minLines: 1,
                       maxLines: 5,
                       decoration: InputDecoration(
@@ -119,6 +129,9 @@ class AddAddress extends StatelessWidget {
                 ),
                 Spacer(),
                 InkWell(
+                  onTap: () {
+                    c.addAddress();
+                  },
                   child: Container(
                     width: 250,
                     height: 50,

@@ -6,10 +6,12 @@ import 'package:ternakku/module/category/tabs/alat_tab.dart';
 import 'package:ternakku/module/category/tabs/all_tab.dart';
 import 'package:ternakku/module/category/tabs/makanan_tab.dart';
 import 'package:ternakku/module/category/tabs/obat_tab.dart';
+import 'package:ternakku/module/homepage/controller/home_controller.dart';
 import '../../global/colors.dart';
 
 class CategoryPage extends StatelessWidget {
   int selectedPage;
+  HomeController c = Get.put(HomeController());
   CategoryPage(this.selectedPage);
 
   @override
@@ -29,9 +31,6 @@ class CategoryPage extends StatelessWidget {
               },
               tabs: [
                 Tab(text: ("Semua")),
-                Tab(text: ("Alat")),
-                Tab(text: ("Obat")),
-                Tab(text: ("Makanan")),
               ],
             ),
             title: TextField(

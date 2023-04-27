@@ -14,29 +14,17 @@ class ValidateController extends GetxController {
   }
 
   void ValidateAccount() async {
-    var token = (box.read('access_token'));
-    var uuid = (box.read('user_id'));
-    Future.delayed(Duration(seconds: 2), () async {
-      if (token == null || uuid == null) {
-        ClearCookies();
+    try {
+      var response = await Dio().get(ApirUrl.ApiUrl + '/api/validate/user');
+      print(response.data);
+      if (response.data['status'] == 'berhasil') {
+        Get.offAllNamed(Routes.HOME_PAGE);
       } else {
-        try {
-          var response_token =
-              await Dio().get(ApirUrl.ApiUrl + '/auth/protected',
-                  options: Options(headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + token,
-                  }));
-          var response_user =
-              await Dio().get(ApirUrl.ApiUrl + '/users/id/' + uuid);
-          response_user.data.toString() == ''
-              ? ClearCookies()
-              : Get.offAllNamed(Routes.HOME_PAGE);
-        } catch (e) {
-          ClearCookies();
-        }
+        Get.offAllNamed(Routes.LOGIN_PAGE);
       }
-    });
+    } catch (e) {
+      Get.offAllNamed(Routes.LOGIN_PAGE);
+    }
   }
 
   void ClearCookies() {

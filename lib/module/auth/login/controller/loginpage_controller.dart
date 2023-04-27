@@ -25,14 +25,18 @@ class LoginController extends GetxController {
 
   void loginAccount(context) async {
     try {
-      var response = await Dio().post(ApirUrl.ApiUrl + '/auth/login',
-          data: {'username': username.text, 'password': password.text});
-      print(response.data);
-      box.write('access_token', response.data['access_token']);
-      box.write('user_id', response.data['user_id']);
+      var response =
+          await Dio().post(ApirUrl.ApiUrl + '/api/login/user', data: {
+        "username": username.text,
+        "password": password.text,
+      });
+      // if (response.data['status'] == 'berhasil') {
       Get.offAllNamed(Routes.HOME_PAGE);
+      // } else {
+      //   print('f1l');
+      // }
     } catch (e) {
-      print(e);
+      print('f2l');
     }
   }
 }
