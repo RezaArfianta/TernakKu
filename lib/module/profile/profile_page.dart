@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ternakku/global/colors.dart';
 import 'package:ternakku/module/about/informasi_umum_page.dart';
+import 'package:ternakku/module/pemesanan/order_index.dart';
 import 'package:ternakku/module/profile/controller/profile_controller.dart';
 import 'package:ternakku/module/profile/view/pengaturan_profile.dart';
 import 'package:ternakku/widgets/fitur.dart';
@@ -62,7 +63,12 @@ class ProfilePage extends StatelessWidget {
                       Transform.scale(
                         scale: 0.9,
                         child: TextButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OrderIndex(0)));
+                            },
                             icon: Transform.scale(
                                 scale: 0.8,
                                 child: Icon(Icons.arrow_forward_ios_rounded)),
