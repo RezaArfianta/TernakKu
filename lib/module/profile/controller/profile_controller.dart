@@ -21,10 +21,17 @@ class ProfileController extends GetxController {
     super.onInit();
   }
 
-  void ClearCookies() {
-    box.remove('user_id');
-    box.remove('access_token');
-    Get.offAllNamed(Routes.LOGIN_PAGE);
+  void ClearCookies() async {
+    try {
+      var response =
+          await Dio().post(ApirUrl.ApiUrl + '/api/logout/user', data: {
+        "phone_id": box.read('deviceId'),
+      });
+      box.remove('deviceId');
+      Get.offAllNamed(Routes.LOGIN_PAGE);
+    } catch (e) {
+      print('Failed');
+    }
   }
 
   void addAddress() async {

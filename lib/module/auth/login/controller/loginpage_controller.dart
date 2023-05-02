@@ -29,6 +29,7 @@ class LoginController extends GetxController {
           await Dio().post(ApirUrl.ApiUrl + '/api/login/user', data: {
         "username": username.text,
         "password": password.text,
+        "phone_id": box.read('deviceId')
       });
       // if (response.data['status'] == 'berhasil') {
       Get.offAllNamed(Routes.HOME_PAGE);

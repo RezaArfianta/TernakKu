@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:testingnew/global/colors.dart';
-import 'package:testingnew/module/cart/widget/cart_bottommodal.dart';
-import 'package:testingnew/module/cart/widget/cart_card.dart';
-import 'package:testingnew/module/checkout/checkout_index.dart';
+import 'package:ternakku/global/colors.dart';
+import 'package:ternakku/module/cart/widget/cart_bottommodal.dart';
+import 'package:ternakku/module/cart/widget/cart_card.dart';
+import 'package:ternakku/module/checkout/checkout_index.dart';
 
 class CartIndex extends StatefulWidget {
   CartIndex({super.key});

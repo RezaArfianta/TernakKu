@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:testingnew/module/pemesanan/tabs/order_belumbayar.dart';
-import 'package:testingnew/module/pemesanan/tabs/order_sedangdiproses.dart';
-import 'package:testingnew/module/pemesanan/tabs/order_semua.dart';
+import 'package:ternakku/module/pemesanan/tabs/order_belumbayar.dart';
+import 'package:ternakku/module/pemesanan/tabs/order_sedangdiproses.dart';
+import 'package:ternakku/module/pemesanan/tabs/order_semua.dart';
 
 import '../../global/colors.dart';
 

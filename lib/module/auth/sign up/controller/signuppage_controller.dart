@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ternakku/api_url.dart';
 import 'package:ternakku/module/auth/login/login_page.dart';
 import 'package:ternakku/routes/app_pages.dart';
@@ -14,6 +15,7 @@ class SignupController extends GetxController {
   TextEditingController noTelp = TextEditingController();
   TextEditingController password = TextEditingController();
   RxBool obscureText = true.obs;
+  final box = GetStorage();
 
   @override
   void onInit() {
@@ -32,7 +34,7 @@ class SignupController extends GetxController {
         "password": password.text,
         "nama_pengguna": namaPengguna.text,
         "email": email.text,
-        "no_telp": noTelp.text
+        "no_telp": noTelp.text,
       });
       if (response.data['status'] == 'berhasil') {
         Get.offAllNamed(Routes.LOGIN_PAGE);

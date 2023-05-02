@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testingnew/global/colors.dart';
+import 'package:ternakku/global/colors.dart';
 
 class CheckoutIndex extends StatefulWidget {
   CheckoutIndex({super.key});
