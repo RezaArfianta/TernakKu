@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:ternakku/api_url.dart';
 import 'package:ternakku/module/auth/sign%20up/signup_page.dart';
 import 'package:get_storage/get_storage.dart';
@@ -31,13 +32,26 @@ class LoginController extends GetxController {
         "password": password.text,
         "phone_id": box.read('deviceId')
       });
+      if (response.data['status'] == 'gagal') {
+        return PanaraInfoDialog.show(context,
+            title: "Gagal masuk!",
+            message: 'Gagal masuk, silakan coba lagi!',
+            buttonText: "Okay", onTapDismiss: () {
+          Get.back();
+        }, panaraDialogType: PanaraDialogType.error, barrierDismissible: false);
+      }
       // if (response.data['status'] == 'berhasil') {
       Get.offAllNamed(Routes.HOME_PAGE);
       // } else {
       //   print('f1l');
       // }
     } catch (e) {
-      print('f2l');
+      return PanaraInfoDialog.show(context,
+          title: "Gagal masuk!",
+          message: 'Gagal masuk, silakan coba lagi!',
+          buttonText: "Okay", onTapDismiss: () {
+        Get.back();
+      }, panaraDialogType: PanaraDialogType.error, barrierDismissible: false);
     }
   }
 }

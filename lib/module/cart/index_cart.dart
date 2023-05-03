@@ -1,4 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:ternakku/api_url.dart';
 import 'package:ternakku/global/colors.dart';
 import 'package:ternakku/module/cart/widget/cart_bottommodal.dart';
 import 'package:ternakku/module/cart/widget/cart_card.dart';
@@ -13,6 +16,26 @@ class CartIndex extends StatefulWidget {
 
 class _CartIndexState extends State<CartIndex> {
   bool checked = false;
+  dynamic carts = [];
+  final box = GetStorage();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getAllCart();
+    super.initState();
+  }
+
+  void getAllCart() async {
+    var response =
+        await Dio().get(ApirUrl.ApiUrl + '/api/carts/' + box.read('deviceId'));
+    if (response.data['data'].length >= 1) {
+      setState(() {
+        carts = response.data['data'];
+      });
+      print(carts);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +72,9 @@ class _CartIndexState extends State<CartIndex> {
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                itemCount: 15,
+                itemCount: carts.length,
                 itemBuilder: ((context, index) {
-                  return CartCard();
+                  return CartCard(carts[index]);
                 }),
               ),
             ),

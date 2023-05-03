@@ -6,10 +6,10 @@ import 'package:ternakku/module/auth/validate/controller/validate_controller.dar
 
 class ValidatePage extends StatelessWidget {
   ValidatePage({super.key});
-  ValidateController c = Get.put(ValidateController());
 
   @override
   Widget build(BuildContext context) {
+    Get.put(ValidateController(context: context));
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,

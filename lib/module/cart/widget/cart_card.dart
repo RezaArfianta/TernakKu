@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../global/colors.dart';
 
 class CartCard extends StatefulWidget {
-  const CartCard({super.key});
+  final dynamic cart;
+
+  const CartCard(this.cart, {super.key});
 
   @override
   State<CartCard> createState() => _CartCardState();
@@ -14,7 +16,9 @@ class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        print(widget.cart);
+      },
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(

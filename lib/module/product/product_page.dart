@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ternakku/api_url.dart';
 import 'package:ternakku/global/colors.dart';
 import 'package:ternakku/module/product/controller/product_controller.dart';
 
@@ -19,7 +20,7 @@ class ProductPage extends StatelessWidget {
               children: [
                 Image(
                   width: MediaQuery.of(context).size.width,
-                  image: NetworkImage('https://picsum.photos/400/400'),
+                  image: NetworkImage(ApirUrl.ApiImg + product['product_img']),
                 ),
                 Padding(
                   padding: EdgeInsets.all(20),
@@ -27,16 +28,16 @@ class ProductPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        product[0]['product_name'].toString(),
+                        product['product_name'].toString(),
                         style: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 24),
                       ),
-                      Text(product[0]['product_desc'].toString()),
+                      Text(product['description'].toString()),
                       SizedBox(
                         height: 20,
                       ),
                       Text(
-                        'Rp ' + product[0]['base_price'].toString(),
+                        'Rp ' + product['base_price'].toString(),
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
@@ -58,7 +59,7 @@ class ProductPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.4,
               child: ElevatedButton(
                 onPressed: () {
-                  c.AddToCart(product[0]['id']);
+                  c.AddToCart(product['id'], context);
                 },
                 child: Text('Add To Cart'),
               ),

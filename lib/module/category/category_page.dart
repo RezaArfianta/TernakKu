@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:ternakku/module/category/tabs/alat_tab.dart';
+import 'package:ternakku/module/category/tabs/rumput_tab.dart';
 import 'package:ternakku/module/category/tabs/all_tab.dart';
-import 'package:ternakku/module/category/tabs/makanan_tab.dart';
-import 'package:ternakku/module/category/tabs/obat_tab.dart';
+import 'package:ternakku/module/category/tabs/pupuk_tab.dart';
+import 'package:ternakku/module/category/tabs/susu_tab.dart';
 import 'package:ternakku/module/homepage/controller/home_controller.dart';
 import '../../global/colors.dart';
 
@@ -18,7 +18,7 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
         initialIndex: selectedPage,
-        length: 4,
+        length: 5,
         child: Scaffold(
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.black),
@@ -31,6 +31,10 @@ class CategoryPage extends StatelessWidget {
               },
               tabs: [
                 Tab(text: ("Semua")),
+                Tab(text: ("Susu")),
+                Tab(text: ("Pupuk")),
+                Tab(text: ("Rumput")),
+                Tab(text: ("Daging")),
               ],
             ),
             title: TextField(
@@ -47,9 +51,10 @@ class CategoryPage extends StatelessWidget {
           ),
           body: TabBarView(children: [
             new AllTab(),
-            new AlatTab(),
-            new ObatTab(),
-            new MakananTab(),
+            new SusuTab(),
+            new PupukTab(),
+            new RumputTab(),
+            new PupukTab(),
           ]),
         ));
   }

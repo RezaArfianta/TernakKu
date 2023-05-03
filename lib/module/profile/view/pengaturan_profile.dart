@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:supercharged/supercharged.dart';
+import 'package:ternakku/module/profile/controller/profile_controller.dart';
 import 'package:ternakku/module/profile/view/tambah_alamat.dart';
 import '../../../global/colors.dart';
 
 class ProfileSetting extends StatelessWidget {
-  const ProfileSetting({super.key});
+  ProfileSetting({super.key});
+  ProfileController c = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,10 @@ class ProfileSetting extends StatelessWidget {
                         children: [
                           Text('Nama Lengkap'),
                           Spacer(),
-                          Text('Kayla',
+                          Text(
+                              c.profileName.count() > 0
+                                  ? c.profileName[0]['nama_pengguna']
+                                  : 'Tunggu.....',
                               style: TextStyle(color: Warna.fadeGrey)),
                         ],
                       ),
@@ -59,7 +66,9 @@ class ProfileSetting extends StatelessWidget {
                           Text('Email'),
                           Spacer(),
                           Text(
-                            'kyl04npm@gmail.com',
+                            c.profileName.count() > 0
+                                ? c.profileName[0]['email']
+                                : 'Tunggu.....',
                             style: TextStyle(color: Warna.fadeGrey),
                           )
                         ],
@@ -75,7 +84,10 @@ class ProfileSetting extends StatelessWidget {
                         children: [
                           Text('Username'),
                           Spacer(),
-                          Text('Kakakakay',
+                          Text(
+                              c.profileName.count() > 0
+                                  ? c.profileName[0]['username']
+                                  : 'Tunggu.....',
                               style: TextStyle(color: Warna.secondaryGreen))
                         ],
                       ),
@@ -92,7 +104,10 @@ class ProfileSetting extends StatelessWidget {
                             'Nomor Handphone',
                           ),
                           Spacer(),
-                          Text('0812984812',
+                          Text(
+                              c.profileName.count() > 0
+                                  ? c.profileName[0]['no_telp'].toString()
+                                  : 'Tunggu.....',
                               style: TextStyle(color: Warna.fadeGrey))
                         ],
                       ),

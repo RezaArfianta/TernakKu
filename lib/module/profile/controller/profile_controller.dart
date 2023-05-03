@@ -2,11 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:supercharged/supercharged.dart';
 import 'package:ternakku/api_url.dart';
 import 'package:ternakku/routes/app_pages.dart';
 
 class ProfileController extends GetxController {
   final box = GetStorage();
+  RxList profileName = [].obs;
   TextEditingController namaPenerima = TextEditingController();
   TextEditingController noTelpPenerima = TextEditingController();
   TextEditingController provinsi = TextEditingController();
@@ -18,6 +20,7 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
+    getProfile();
     super.onInit();
   }
 
@@ -46,6 +49,14 @@ class ProfileController extends GetxController {
       });
     } catch (e) {
       print('Tampil alert gagal');
+    }
+  }
+
+  void getProfile() async {
+    var response =
+        await Dio().get(ApirUrl.ApiUrl + '/api/users/' + box.read('deviceId'));
+    if (response.data['data'].length >= 1) {
+      profileName.value = [response.data['data']];
     }
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:get/get.dart';
+import 'package:supercharged/supercharged.dart';
 import 'package:ternakku/global/colors.dart';
 import 'package:ternakku/module/about/informasi_umum_page.dart';
 import 'package:ternakku/module/pemesanan/order_index.dart';
@@ -24,20 +26,26 @@ class ProfilePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(top: 50, bottom: 50, left: 30),
               color: Warna.secondaryGreen,
-              child: ListTile(
-                leading: CircleAvatar(
-                  // radius: 120,
-                  backgroundColor: Colors.red,
-                  backgroundImage: NetworkImage(
-                    'https://picsum.photos/400/400',
+              child: Obx(
+                () => ListTile(
+                  leading: CircleAvatar(
+                    // radius: 120,
+                    backgroundColor: Colors.red,
+                    backgroundImage: NetworkImage(
+                      'https://picsum.photos/400/400',
+                    ),
                   ),
+                  // Image(
+                  //   width: MediaQuery.of(context).size.width * 0.1,
+                  //   image: NetworkImage('https://picsum.photos/400/400'),
+                  // ),
+                  title: Text(c.profileName.count() > 0
+                      ? c.profileName[0]['username']
+                      : 'Tunggu.....'),
+                  subtitle: Text(c.profileName.count() > 0
+                      ? c.profileName[0]['nama_pengguna']
+                      : 'Tunggu.....'),
                 ),
-                // Image(
-                //   width: MediaQuery.of(context).size.width * 0.1,
-                //   image: NetworkImage('https://picsum.photos/400/400'),
-                // ),
-                title: Text('dafddddddddddddddddta'),
-                subtitle: Text('datadddddddddddddddddddddr'),
               ),
             ),
             Container(
@@ -228,7 +236,16 @@ class ProfilePage extends StatelessWidget {
                       backgroundColor: Warna.secondaryGreen,
                     ),
                     onPressed: () {
-                      c.ClearCookies();
+                      return PanaraConfirmDialog.show(context,
+                          title: "Apakah kamu yakin?",
+                          message:
+                              "Apakau kamu yakin ingin keluar dari akun ini?",
+                          confirmButtonText: "Confirm",
+                          cancelButtonText: "Cancel", onTapCancel: () {
+                        Get.back();
+                      }, onTapConfirm: () {
+                        c.ClearCookies();
+                      }, panaraDialogType: PanaraDialogType.warning);
                     },
                     child: Text(
                       'Log Out',

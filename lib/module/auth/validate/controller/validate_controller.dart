@@ -6,11 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:ternakku/api_url.dart';
 import 'package:ternakku/routes/app_pages.dart';
 
 class ValidateController extends GetxController {
   final box = GetStorage();
+  late BuildContext context;
+  ValidateController({required this.context});
+
   @override
   void onInit() {
     _getDeviceId();
@@ -50,7 +54,12 @@ class ValidateController extends GetxController {
           Get.offAllNamed(Routes.LOGIN_PAGE);
         }
       } catch (e) {
-        print('f2l');
+        return PanaraInfoDialog.show(context,
+            title: "Gagal masuk!",
+            message: 'Gagal masuk, silakan coba lagi!',
+            buttonText: "Okay", onTapDismiss: () {
+          Get.offAllNamed(Routes.VALIDATION_PAGE);
+        }, panaraDialogType: PanaraDialogType.error, barrierDismissible: false);
       }
     }
   }
